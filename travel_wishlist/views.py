@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Place
-from .forms import NewPlaceForm
+from .forms import NewPlaceForm, EditPlaceForm
 
 # Create your views here.
 def place_list(request):
@@ -31,3 +31,8 @@ def place_is_visited(request):
 
     return redirect('place_list')
 
+def place_to_edit(request, pk):
+    #places = get_object_or_404(Edit, pk=pk)
+    places = Place.objects.filter(visited=False, pk=pk)
+    edit_place_form = EditPlaceForm
+    return render(request, 'travel_wishlist/editlist.html', {'places': places, 'edit_place_form': edit_place_form})

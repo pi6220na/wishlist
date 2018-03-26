@@ -8,6 +8,8 @@
 <ul>
     {% for place in visited %}
         <li>{{ place.name }}</li>
+        <li>{{ place.visited_date }}</li>
+        <li>{{ place.review_text }}</li>
     {% endfor %}
 </ul>
 

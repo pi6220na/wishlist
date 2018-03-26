@@ -15,10 +15,10 @@
 
 <div class="wishlist-place">
 
-    <span class="visited-text">{{ place.name }}</span>
-    {{ place.name }}
 
-    <form class="visited-form" method="POSt" action="{%  url 'place_is_visited' %}">
+    <span class="visited-text"><a href="{% url 'edit_detail' pk=place.pk %}">{{ place.name }}</a></span>
+
+    <form class="visited-form" method="POST" action="{%  url 'place_is_visited' %}">
         {%  csrf_token %}
         <input type="hidden" name="pk" value="{{ place.pk }}">
         <button type="submit">Visited</button>
@@ -27,7 +27,7 @@
 
 {% empty %}
 
-<P>You have no palces in your wishlist</P>
+<P>You have no places in your wishlist</P>
 
 {%  endfor %}
 
