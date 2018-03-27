@@ -6,7 +6,8 @@
     {{ request.method }}
 
 <h1>New post</h1>
-<form method="POST" class="post-form">{% csrf_token %}
+<form method="POST" class="edit_place_form">{% csrf_token %}
+    {{ edit_place_form }}
     {{ form.as_p }}
     <button type="submit" class="save btn btn-default">Save</button>
 </form>
