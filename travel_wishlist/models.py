@@ -6,7 +6,7 @@ import time
 class Place(models.Model):
     name = models.CharField(max_length=200)
     visited = models.BooleanField(default=False)
-    visited_date = models.DateTimeField(
+    visited_date = models.DateField(
             blank=True, null=True)
     review_text = models.TextField(blank=True, null=True)
 
@@ -18,7 +18,7 @@ class Place(models.Model):
             return '%s visited? %s %s ' % (self.name, self.visited, self.review_text)
         else:
             print(' has a date ')
-            struct_time = time.strptime(self.visited_date, "%d %b %y")
-            print(struct_time)
-            return '%s visited? %s %s %s' % (self.name, self.visited, struct_time, self.review_text)
+            #struct_time = time.strptime(self.visited_date, "%d %b %y")
+            #print(struct_time)
+            return '%s visited? %s %s %s' % (self.name, self.visited, self.visited_date, self.review_text)
 
