@@ -55,7 +55,7 @@ def place_to_edit(request, pk):
     #places = Place.objects.filter(visited=False)
     edit_place_form = EditPlaceForm(request.POST, instance=place)
         #return render(request, 'travel_wishlist/wishlist.html', {'places': places, 'new_place_form': new_place_form})
-
+    print(place.visited_date)
     return render(request, 'travel_wishlist/editlist.html', {'place': place, 'edit_place_form': edit_place_form})
 
 
