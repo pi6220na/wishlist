@@ -15,7 +15,7 @@
 
 <div class="wishlist-place">
 
-
+    <div>{{ place.pk }}</div>
     <span class="visited-text"><a href="{% url 'edit_detail' pk=place.pk %}">{{ place.name }}</a></span>
 
     <form class="visited-form" method="POST" action="{%  url 'place_is_visited' %}">

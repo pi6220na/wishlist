@@ -6,7 +6,7 @@ class NewPlaceForm(forms.ModelForm):
         model = Place
         fields = ('name', 'visited')
 
-class EditPlaceForm(forms.BaseModelForm):
+class EditPlaceForm(forms.ModelForm):
     class Meta:
         model = Place
         fields = ('name', 'visited', 'visited_date', 'review_text' )

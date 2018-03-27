@@ -11,5 +11,6 @@ class Place(models.Model):
     review_text = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        struct_time = time.strptime(self.visited_date, "%d %b %y")
-        return '%s visited? %s %s %s' % (self.name, self.visited, struct_time, self.review_text)
+        #struct_time = time.strptime(self.visited_date, "%d %b %y")
+        #return '%s visited? %s %s %s' % (self.name, self.visited, struct_time, self.review_text)
+        return '%s visited? %s %s ' % (self.name, self.visited, self.review_text)

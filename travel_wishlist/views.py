@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Place
 from .forms import NewPlaceForm, EditPlaceForm
 
+
 # Create your views here.
 def place_list(request):
 
@@ -32,7 +33,28 @@ def place_is_visited(request):
     return redirect('place_list')
 
 def place_to_edit(request, pk):
-    #places = get_object_or_404(Edit, pk=pk)
-    places = Place.objects.filter(visited=False, pk=pk)
+    place = get_object_or_404(Place, pk=pk)
+    #place = Place.objects.filter(visited=False, pk=pk)
+    print(place)
+    print(request.method)
+    #edit_place_form = EditPlaceForm
+
+    if request.method == "POST":
+        form = EditPlaceForm(request.POST, instance=place)
+        if form.is_valid():
+            place = form.save(commit=False)
+            place.name = request.name
+            place.visited = request.visited
+            place.review_text = request.review_text
+            place.visited_date = request.visited_date
+            place.save()
+            return redirect('edit_detail', pk=place.pk)
+
+        #form = EditPlaceForm(instance=Place)
+    places = Place.objects.filter(visited=False)
     edit_place_form = EditPlaceForm
+        #return render(request, 'travel_wishlist/wishlist.html', {'places': places, 'new_place_form': new_place_form})
+
     return render(request, 'travel_wishlist/editlist.html', {'places': places, 'edit_place_form': edit_place_form})
+
+

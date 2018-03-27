@@ -7,9 +7,8 @@
 
 <ul>
     {% for place in visited %}
-        <li>{{ place.name }}</li>
-        <li>{{ place.visited_date }}</li>
-        <li>{{ place.review_text }}</li>
+        <li>{{ place.name }} <span>{{  place.visited_date  }}</span></li>
+        <span>{{ place.review_text }}</span>
     {% endfor %}
 </ul>
 
