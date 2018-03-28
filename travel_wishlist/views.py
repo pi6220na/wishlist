@@ -34,10 +34,6 @@ def place_is_visited(request):
 
 def place_to_edit(request, pk):
     place = get_object_or_404(Place, pk=pk)
-    #place = Place.objects.filter(visited=False, pk=pk)
-    print(place)
-    print(request.method)
-    #edit_place_form = EditPlaceForm
 
     if request.method == "POST":
         form = EditPlaceForm(request.POST, instance=place)
@@ -54,8 +50,7 @@ def place_to_edit(request, pk):
         #form = EditPlaceForm(instance=Place)
     #places = Place.objects.filter(visited=False)
     edit_place_form = EditPlaceForm(request.POST, instance=place)
-        #return render(request, 'travel_wishlist/wishlist.html', {'places': places, 'new_place_form': new_place_form})
-    print(place.visited_date)
+
     return render(request, 'travel_wishlist/editlist.html', {'place': place, 'edit_place_form': edit_place_form})
 
 
