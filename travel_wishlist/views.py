@@ -39,18 +39,11 @@ def place_to_edit(request, pk):
         form = EditPlaceForm(request.POST, instance=place)
         if form.is_valid():
             print('about to save form')
-            placed = form.save(commit=False)
-            placed.name = place.name
-            placed.visited = place.visited
-            placed.review_text = place.review_text
-            placed.visited_date = place.visited_date
-            placed.save()
+            form.save()
             return redirect('edit_detail', pk=place.pk)
 
         #form = EditPlaceForm(instance=Place)
     #places = Place.objects.filter(visited=False)
-    edit_place_form = EditPlaceForm(request.POST, instance=place)
+    edit_place_form = EditPlaceForm(instance=place)
 
     return render(request, 'travel_wishlist/editlist.html', {'place': place, 'edit_place_form': edit_place_form})
-
-

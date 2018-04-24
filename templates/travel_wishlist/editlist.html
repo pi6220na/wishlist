@@ -2,7 +2,17 @@
 
 {% block content %}
 
-<h1>New post</h1>
+<h1>{{ place.name }}</h1>
+
+{% if place.visited_date %}
+  <P>Visited on {{ place.visited_date }}</p>
+{% else %}
+  <p>Not visited or visit date unknown</p>
+{% endif %}
+
+<p>{{ place.review_text }}</p>
+
+
 <form method="POST" class="edit_place_form">{% csrf_token %}
     {{ edit_place_form }}
     {{ form.as_p }}
@@ -10,4 +20,3 @@
 </form>
 
 {% endblock %}
-
