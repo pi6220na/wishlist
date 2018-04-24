@@ -39,15 +39,7 @@ def place_to_edit(request, pk):
         form = EditPlaceForm(request.POST, instance=place)
         if form.is_valid():
             print('about to save form')
-            form_data = form.cleaned_data
-            print('place', place)
-            print('form data', form_data)
-            if form_data.get('review_text'):
-                print('update review', form_data.get('review_text'))
-                place.review_text = form_data.get('review_text')
-            if form_data.get('visited_date'):
-                place.visited_date = form_data.get('visited_date')
-            place.save()
+            form.save()
             return redirect('edit_detail', pk=place.pk)
 
         #form = EditPlaceForm(instance=Place)
