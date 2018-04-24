@@ -13,5 +13,5 @@ class NewPlaceForm(forms.ModelForm):
 class EditPlaceForm(forms.ModelForm):
     class Meta:
         model = Place
-        fields = ('name', 'visited', 'visited_date', 'review_text' )
+        fields = ('visited_date', 'review_text' )
         widgets = {'visited_date': DateInput()}
